@@ -298,9 +298,10 @@ l = -975;
 h = 610;
 q=1950;
     s=stairH;
-    aw=12;
+    aw=0;//12;
 
-translate([-bb+aa*2+5,l-100,h-2*s])rotate([0,0,30])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+//translate([-bb+aa*2+5,l-100,h-2*s])rotate([0,0,30])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb+aa*2,l,h-1*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([-bb+aa*1,l,h+0*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([-bb-aa*0,l,h+1*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([-bb-aa*1,l,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
@@ -354,10 +355,10 @@ ax6 = st  * c; ay6 =st*c1t*c; bx6 = spx  * c; by6 =spy*c1p*cf15*c; cx6 = spx   *
 
     translate([0,0,-lev*2-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax2, ay2], [bx2, by2], [cx2, cy2], [dx2, dy2]]);
+            polygon(points=[[ax2-3/2*sh, ay2], [bx2-3/2*sh, by2], [cx2, cy2], [dx2, dy2]]);
     translate([0,0,-lev-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax1, ay1], [bx1, by1], [cx1, cy1], [dx1, dy1]]);
+            polygon(points=[[ax1-3*sh, ay1], [bx1-3*sh, by1], [cx1-3/2*sh, cy1], [dx1-3/2*sh, dy1]]);
 
 }
 //translate([-1260,-1260,6*stairH])  color( wood, stairAlpha )pivot5x5(40,stairH,nosing,1000);
@@ -408,7 +409,7 @@ module stair(n,stD,stH,xl,yl,zl){//
                     square([xl,yl],center = false);
 }
 
-
+sh = 00;
   module pivot6x6(ths,lev,vstp,pivotPlate){
 
 st = stairD*1.5;
@@ -434,13 +435,13 @@ ax6 = st  * c; ay6 =st*c1t*c; bx6 = spx  * c; by6 =spy*c1p*c; cx6 = spx   * c; c
 
     translate([0,0,-lev*6-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax6, ay6], [bx6, by6], [cx6, cy6], [dx6, dy6]]);    
+            polygon(points=[[ax6, ay6+2*sh], [bx6, by6+2*sh], [cx6, cy6+3*sh], [dx6, dy6+3*sh]]);    
     translate([0,0,-lev*5-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax5, ay5], [bx5, by5], [cx5, cy5], [dx5, dy5]]);
+            polygon(points=[[ax5, ay5+1*sh], [bx5, by5+1*sh], [cx5, cy5+2*sh], [dx5, dy5+2*sh]]);
     translate([0,0,-lev*4-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax4, ay4], [bx4, by4], [cx4, cy4], [dx4, dy4]]);
+            polygon(points=[[ax4, ay4], [bx4, by4], [cx4, cy4+1*sh], [dx4, dy4+1*sh]]);
     translate([0,0,-lev*3-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
             polygon(points=[[ax3, ay3], [bx3, by3], [cx3, cy3], [dx3, dy3]]);
@@ -505,12 +506,12 @@ module stairsPlatets1(){
         auxPlates1();
     }
 }
-if(cb)difference()  {stairsPlatets1(); platesCuttingAuxBody1();}
+if(0)if(cb)difference()  {stairsPlatets1(); platesCuttingAuxBody1();}
 else stairsPlatets();
 //ступени
 if(1){
 translate([-1260,-1260,6*stairH])  color( wood, stairAlpha )pivot5x5(40,stairH,nosing,1000);
-translate([-1000-stairD*2,0,6*stairH]) rotate([0,0,270]) stair(4,stairD,stairH,1000,stairD+nosing,stairTHS);//нижний пролет
+translate([-1000-stairD*2-3*sh,0,6*stairH]) rotate([0,0,270]) stair(4,stairD,stairH,1000,stairD+nosing,stairTHS);//нижний пролет
 translate([-norWallDist +1370,-1390,stairH*16]) rotate([0,0,90]) color( wood, stairAlpha )pivot6x6(40,stairH,nosing,1000);
 translate([-norWallDist-20,-1650,16*stairH]) rotate([0,0,0]) stair(3,stairD,stairH,1000,stairD+nosing,stairTHS);//верхний пролет
 }
