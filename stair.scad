@@ -80,6 +80,9 @@ translate([-3050,-2195,2980-stairH]) color("green") sphere(r = 2);
 translate([-3050,-2195,2996.5-stairH]) color("green") sphere(r = 2);
 translate([-3050,-2145,3068-stairH]) color("green") sphere(r = 2);
 translate([-3000,-600,1734]) color("green") sphere(r = 2);
+translate([-2710,-986,2734]) color("green") sphere(r = 1);
+translate([-2580,-986,2734]) color("green") sphere(r = 1);
+translate([-2710,-986-130,2734]) color("green") sphere(r = 1);
 
 
 //stairs beacons
@@ -275,7 +278,7 @@ q=1950;
     s=stairH;
 translate([l,-bb-a*0,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([l,-bb+a*1,h+0*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
- translate([l,-bb+a*2,h-1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([l+20,-bb+a*2+1,h-1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 
 
 translate([l,-bb-aa*1,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
@@ -293,15 +296,15 @@ color( steel, stairAlpha ){
     b = 205;//144;
     
 aa = 130;//136.5;    
-    bb= 1240;
+    bb= 1240+3*sh;
 l = -975;
 h = 610;
 q=1950;
     s=stairH;
     aw=0;//12;
 
-//translate([-bb+aa*2+5,l-100,h-2*s])rotate([0,0,30])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb+aa*2,l,h-1*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb+aa*2+36,l-100+3,h-2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb+aa*2-14,l,h-1*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([-bb+aa*1,l,h+0*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([-bb-aa*0,l,h+1*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
 translate([-bb-aa*1,l,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
@@ -409,7 +412,7 @@ module stair(n,stD,stH,xl,yl,zl){//
                     square([xl,yl],center = false);
 }
 
-sh = 00;
+sh = 10;//16.6;
   module pivot6x6(ths,lev,vstp,pivotPlate){
 
 st = stairD*1.5;
