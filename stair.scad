@@ -2,6 +2,7 @@ allc = 2;// 0- no construct element , 1 - local define, 2 - show all construct e
 allca = 0;
 allco = 1;
 strs = 1;
+stepPlates =1;
 if(allc == 2) let (allca = 1); let (allco = 1);
 if(allc==1){ allca = 1; allco = 0;}
 if(allc==0){ allca = 0; allco = 0;}
@@ -181,7 +182,7 @@ module qTube2(l,d,dd){
 translate([-25,-25,0]){
 translate([-1075,-675,611]) rotate([0,90,0])qTube2(125,100,50);
 translate([-985,-660,611]) rotate([180,0,45])qTube2(264,50,100);
-translate([-914,-731,447]) rotate([45,90,0])qTube2(100,100,50);
+translate([-914,-731,447]) rotate([45,90,0])qTube2(86,100,50);
 translate([-853,-792,447]) rotate([180,0,45])qTube2(264,50,100);
 translate([-797,-828,283]) rotate([90,90,0])qTube2(105,100,50);
 translate([-797,-933,283]) rotate([180,0,0])qTube2(295,50,100);
@@ -194,7 +195,7 @@ translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
 translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
 
-//perila
+//hand rail
 translate([-3675,-000,4000]) rotate([90,0,0])qTube(2200,50);
 translate([-2745,-1000,3394]) rotate([57.65,0,0])qTube(1500,50);
 translate([-2745,-1000,2924]) rotate([-57.65+90+90,0,90])qTube(2030,50);
@@ -251,25 +252,25 @@ l = -3655;
 h = 2092;
 q=1950;
     s=stairH;
-translate([l,-bb-a*0,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*1,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
- translate([l,-bb+a*2,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*3,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*4,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*5,h+0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*6,h+0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*7,h+0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*8,h-0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-//translate([l,-bb+a*9,h-0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-a*0,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*1,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+ translate([l,-bb+a*2,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*3,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*4,h+1*s])linear_extrude(height=q-1*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*5,h+0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*6,h+0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*7,h+0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*8,h-0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+//translate([l,-bb+a*9,h-0*s])linear_extrude(height=q-0*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
 
 
-translate([l,-bb-aa*1,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*2,h+3*s])linear_extrude(height=q-3*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*3,h+3*s])linear_extrude(height=q-3*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*4,h+4*s])linear_extrude(height=q-4*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*5,h+4*s])linear_extrude(height=q-4*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*6,h+5*s])linear_extrude(height=q-5*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*7,h+5*s])linear_extrude(height=q-5*s,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*1,h+2*s])linear_extrude(height=q-2*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*2,h+3*s])linear_extrude(height=q-3*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*3,h+3*s])linear_extrude(height=q-3*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*4,h+4*s])linear_extrude(height=q-4*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*5,h+4*s])linear_extrude(height=q-4*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*6,h+5*s])linear_extrude(height=q-5*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*7,h+5*s])linear_extrude(height=q-5*s,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
 }
 
 
@@ -284,18 +285,18 @@ l = -2720;
 h = 2092;
 q=1950;
     s=stairH;
-translate([l,-bb-a*0,h+1*s])linear_extrude(height=q-1*s-450,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb+a*1,h+0*s])linear_extrude(height=q-2*s-240,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l+20,-bb+a*2+1,h-1*s])linear_extrude(height=q-1*s-300,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-a*0,h+1*s])linear_extrude(height=q-1*s-450,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb+a*1,h+0*s])linear_extrude(height=q-2*s-240,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l+20,-bb+a*2+1,h-1*s])linear_extrude(height=q-1*s-300,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
 
 
-translate([l,-bb-aa*1,h+2*s])linear_extrude(height=q-2*s-370,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*2,h+3*s])linear_extrude(height=q-3*s-310,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*3,h+3*s])linear_extrude(height=q-3*s-200,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*4,h+4*s])linear_extrude(height=q-4*s-120,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*5,h+4*s])linear_extrude(height=q-4*s-40,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*6,h+5*s])linear_extrude(height=q-5*s+10,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([l,-bb-aa*7,h+5*s])linear_extrude(height=q-5*s+90,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*1,h+2*s])linear_extrude(height=q-2*s-370,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*2,h+3*s])linear_extrude(height=q-3*s-310,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*3,h+3*s])linear_extrude(height=q-3*s-200,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*4,h+4*s])linear_extrude(height=q-4*s-120,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*5,h+4*s])linear_extrude(height=q-4*s-40,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*6,h+5*s])linear_extrude(height=q-5*s+10,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([l,-bb-aa*7,h+5*s])linear_extrude(height=q-5*s+90,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
 }
 
 color( steel, stairAlpha ){
@@ -311,20 +312,20 @@ q=1950;
     s=stairH;
     aw=0;//12;
 
-translate([-bb+aa*2+36,l-100+3,h-2*s])linear_extrude(height=q-3*s-260,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb+aa*2-14,l,h-1*s])linear_extrude(height=q-2*s-190,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb+aa*1,l,h+0*s])linear_extrude(height=q-2*s-280,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*0,l,h+1*s])linear_extrude(height=q-2*s-370,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*1,l,h+2*s])linear_extrude(height=q-2*s-450,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*2,l,h+2*s])linear_extrude(height=q-3*s-220,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*3,l,h+3*s])linear_extrude(height=q-3*s-300,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*4,l,h+3*s])linear_extrude(height=q-4*s-50,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*5,l,h+4*s])linear_extrude(height=q-4*s-120,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*6,l,h+4*s])linear_extrude(height=q-5*s+110,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*7,l,h+5*s])linear_extrude(height=q-5*s+20,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*8,l,h+5*s])linear_extrude(height=q-5*s+100,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*9-aw,l,h+6*s])linear_extrude(height=q-5*s+20,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
-translate([-bb-aa*10-2*aw,l,h+7*s])linear_extrude(height=q-5*s-30,center=false,convexity=10,slices=20,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb+aa*2+36,l-100+3,h-2*s])linear_extrude(height=q-3*s-260,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb+aa*2-14,l,h-1*s])linear_extrude(height=q-2*s-190,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb+aa*1,l,h+0*s])linear_extrude(height=q-2*s-280,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*0,l,h+1*s])linear_extrude(height=q-2*s-370,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*1,l,h+2*s])linear_extrude(height=q-2*s-450,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*2,l,h+2*s])linear_extrude(height=q-3*s-220,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*3,l,h+3*s])linear_extrude(height=q-3*s-300,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*4,l,h+3*s])linear_extrude(height=q-4*s-50,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*5,l,h+4*s])linear_extrude(height=q-4*s-120,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*6,l,h+4*s])linear_extrude(height=q-5*s+110,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*7,l,h+5*s])linear_extrude(height=q-5*s+20,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*8,l,h+5*s])linear_extrude(height=q-5*s+100,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*9-aw,l,h+6*s])linear_extrude(height=q-5*s+20,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
+translate([-bb-aa*10-2*aw,l,h+7*s])linear_extrude(height=q-5*s-30,center=false,convexity=10,slices=1,scale=1.0,$fn=16)square(20,center=true);
 }
 
 
@@ -517,7 +518,7 @@ module stairsPlatets1(){
         auxPlates1();
     }
 }
-if(cb)difference()  {stairsPlatets1(); platesCuttingAuxBody1();}
+if(stepPlates)if(cb)difference()  {stairsPlatets1(); platesCuttingAuxBody1();}
 else stairsPlatets();
 //ступени
 if(strs){
@@ -563,15 +564,15 @@ if(allco || (allca && 0)) color(  alpha = alphaWalls ) translate([-corid_length,
 }
 
 //перекрытие малое
-if(allco || (allca && 0)) color( ceiling, alpha = alphaWalls ) translate([-plateWidth,5-corid_width,ceilingtoflour])  linear_extrude(height = 5, center = false,  twist = 0) difference(){
-    square([plateWidth,corid_width],center=false);    
+if(allco || (allca && 0)) color( ceiling, alpha = alphaWalls ) translate([-plateWidth,-60-corid_width,ceilingtoflour])  linear_extrude(height =  flourtoflour - ceilingtoflour, center = false,  twist = 0) difference(){
+    square([plateWidth,corid_width+60],center=false);    
     
     if(meshCoef != 0.0)mesh(meshSize,meshCoef);
     
 }
 
 //Вспомогательная плоскость
-if(allco || (allca && 0)) color( ceiling, alpha = alphaWalls ) translate([-norWallDist,5-corid_width,ceilingtoflour]) rotate([0,90,0]) linear_extrude(height = 5, center = false,  twist = 0) difference(){
+if(0)if(allco || (allca && 0)) color( ceiling, alpha = alphaWalls ) translate([-norWallDist,5-corid_width,ceilingtoflour]) rotate([0,90,0]) linear_extrude(height = 5, center = false,  twist = 0) difference(){
     square([plateWidth,corid_width],center=false);    
     
     if(meshCoef != 0.0)mesh(meshSize,meshCoef);
