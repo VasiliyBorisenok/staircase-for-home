@@ -447,7 +447,7 @@ ax6 = st  * c; ay6 =st*c1t*c; bx6 = spx  * c; by6 =spy*c1p*c; cx6 = spx   * c; c
 
     translate([0,0,-lev*6-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax6, ay6+2*sh], [bx6, by6+2*sh], [cx6, cy6+3*sh], [dx6, dy6+3*sh]]);    
+            polygon(points=[[ax6, ay6+2*sh], [bx6, by6+2*sh], [cx6, cy6], [dx6, dy6+3*sh]]);    
     translate([0,0,-lev*5-ths])
         linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
             polygon(points=[[ax5, ay5+1*sh], [bx5, by5+1*sh], [cx5, cy5+2*sh], [dx5, dy5+2*sh]]);
@@ -469,8 +469,8 @@ module stairsPlatets(){
     translate([-1260,-1260,6*stairH-40])  color( steel, stairAlpha )pivot5x5(5,stairH,0,450);
     translate([-1260,-1260,6*stairH-40])  color( steel, stairAlpha )pivot5x5(5,stairH,nosing,50);
     mirror([0,1,0])color( steel, stairAlpha ){
-        translate([-1000-stairD*2,1000,6*stairH-5]) rotate([0,0,270]) stair(4,stairD,stairH,450,stairD,5);
-        translate([-1000-stairD*2,1000,6*stairH-5]) rotate([0,0,270]) stair(4,stairD,stairH,50,stairD+nosing,5);
+        translate([-1000-stairD*2-3*sh,1000,6*stairH-5]) rotate([0,0,270]) stair(4,stairD,stairH,450,stairD,5);
+        translate([-1000-stairD*2-3*sh,1000,6*stairH-5]) rotate([0,0,270]) stair(4,stairD,stairH,50,stairD+nosing,5);
     }
     
     translate([-norWallDist +1370,-1390,stairH*16-40]) rotate([0,0,90]) color( steel, stairAlpha )pivot6x6(5,stairH,0,450);
