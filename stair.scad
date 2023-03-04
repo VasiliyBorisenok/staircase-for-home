@@ -168,8 +168,7 @@ module mesh(CS,PF){
 
 module qTube(l,d){
     color("blue",0.5)
-    linear_extrude(height = l, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    
-        square([d,d],center=false);
+cube([d,d,l],false);
 }    
 
 module qTube2(l,d,dd){
@@ -187,10 +186,13 @@ translate([-853,-792,447]) rotate([180,0,45])qTube2(264,50,100);
 translate([-797,-828,283]) rotate([90,90,0])qTube2(105,100,50);
 translate([-797,-933,283]) rotate([180,0,0])qTube2(295,50,100);
 }
+module mainString(){
 j=2;
 if(j==0)translate([-3100,0,1344]) rotate([56.83,0,0])qTube(2680,100);
 if(j==1) translate([-3100,0,1364]) rotate([57.65,0,0])qTube(2680,100);/*paralel*///56.83 57.65 56.07 very close 56.5/*не паралельно*/ 57.65- gparalel
 if(j==2)translate([-3100,0,1344]) rotate([56.5,0,0])qTube(2680,100);
+}
+mainString();
 translate([-1110,-700,662]) rotate([180+122.28,0,90])qTube(2235,100);
 translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
@@ -211,6 +213,15 @@ translate([-3050,0,1380])rotate([0,90,90]) color("blue",0.5)linear_extrude(heigh
 if(0)translate([-3665,-2190,3052]) rotate([0,90,90])color("blue",0.5)linear_extrude(height = 2190, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    
 polygon(points=[[0,0],[140,0],[140,5],[5,5],[5,140],[0,140]]);
 
+//plates mounting on stair string
+difference(){translate([-3100,-1680,2745]){
+    difference(){{rotate([180-45,0,0])qTube(180,100);
+    translate([0,-200,0])cube(200);}}
+}mainString();}
+difference(){translate([-3100,-1680 + stairD,2745-stairH]){
+    difference(){{rotate([180-45,0,0])qTube(180,100);
+    translate([0,-200,0])cube(200);}}
+}mainString();}
 //доп внеш косоур
 if(0){
 translate([-3690,-0,2095]) rotate([90,0,0])qTube2(580,50,4);
