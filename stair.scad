@@ -1,7 +1,7 @@
 allc = 2;// 0- no construct element , 1 - local define, 2 - show all construct element
 allca = 0;
-allco = 1;
-strs = 1;
+allco = 0;
+strs = 0;
 stepPlates =1;
 if(allc == 2) let (allca = 1); let (allco = 1);
 if(allc==1){ allca = 1; allco = 0;}
@@ -187,25 +187,28 @@ translate([-853,-792,447]) rotate([180,0,45])qTube2(264,50,100);
 translate([-797,-828,283]) rotate([90,90,0])qTube2(105,100,50);
 translate([-797,-933,283]) rotate([180,0,0])qTube2(295,50,100);
 }
-//translate([-3100,90,1370]) rotate([57.65,0,0])qTube(2800,100);//57.65
-translate([-3100,0,1344]) rotate([56.83,0,0])qTube(2680,100);//57.65 56.07/*не паралельно*/
-translate([-3100,-700,1802]) rotate([122,0,90])qTube(2300,100);
+j=2;
+if(j==0)translate([-3100,0,1344]) rotate([56.83,0,0])qTube(2680,100);
+if(j==1) translate([-3100,0,1364]) rotate([57.65,0,0])qTube(2680,100);/*paralel*///56.83 57.65 56.07 very close 56.5/*не паралельно*/ 57.65- gparalel
+if(j==2)translate([-3100,0,1344]) rotate([56.5,0,0])qTube(2680,100);
+translate([-1110,-700,662]) rotate([180+122.28,0,90])qTube(2235,100);
 translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
 
-translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
+if(1)translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
 
 //hand rail
+if(0){
 translate([-3675,-000,4000]) rotate([90,0,0])qTube(2200,50);
 translate([-2745,-1000,3394]) rotate([57.65,0,0])qTube(1500,50);
 translate([-2745,-1000,2924]) rotate([-57.65+90+90,0,90])qTube(2030,50);
 translate([-985,-1100,1500]) rotate([90-57.65-90,0,30])qTube(160,50);
-
+}
 
 //stringer plate
 translate([-3050,0,1380])rotate([0,90,90]) color("blue",0.5)linear_extrude(height = 5, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    square([280,250],center = true);
 //крепление подвеса
-translate([-3665,-2190,3052]) rotate([0,90,90])color("blue",0.5)linear_extrude(height = 2190, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    
+if(0)translate([-3665,-2190,3052]) rotate([0,90,90])color("blue",0.5)linear_extrude(height = 2190, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    
 polygon(points=[[0,0],[140,0],[140,5],[5,5],[5,140],[0,140]]);
 
 //доп внеш косоур
@@ -241,7 +244,7 @@ translate([-1020,-1170,stairH - 40]) rotate([90,0,0])qTube2(130,20,40);
 }
 
 
-color( steel, stairAlpha ){
+if(0)color( steel, stairAlpha ){
 //решетка лицевая
     a=143.5;
     b = 205;//144;
