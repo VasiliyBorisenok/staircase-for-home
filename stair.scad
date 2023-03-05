@@ -99,30 +99,30 @@ translate([000,   0, 3*164.2]) color("purple") sphere(r = 1);//
 translate([-323,  0, 3*164.2]) color("purple") sphere(r = 1);
 
 translate([-274,  0, 4*164.2]) color("purple") sphere(r = 1);
-translate([-838  ,0, 4*164.2]) color("purple") sphere(r = 1);
+translate([-854  ,0, 4*164.2]) color("purple") sphere(r = 1);
 
-translate([-800,  0, 5*164.2]) color("purple") sphere(r = 1);
-translate([-1260, 0, 5*164.2]) color("purple") sphere(r = 1);
+translate([-816,  0, 5*164.2]) color("purple") sphere(r = 1);
+translate([-1290, 0, 5*164.2]) color("purple") sphere(r = 1);
 
-translate([-1220, 0, 6*164.2]) color("purple") sphere(r = 1);
-translate([-1520, 0, 6*164.2]) color("purple") sphere(r = 1);
+translate([-1250, 0, 6*164.2]) color("purple") sphere(r = 1);
+translate([-1550, 0, 6*164.2]) color("purple") sphere(r = 1);
 
-translate([-1480, 0, 7*164.2]) color("purple") sphere(r = 1);
-translate([-1780, 0, 7*164.2]) color("purple") sphere(r = 1);
+translate([-1510, 0, 7*164.2]) color("purple") sphere(r = 1);
+translate([-1810, 0, 7*164.2]) color("purple") sphere(r = 1);
 
-translate([-1740, 0, 8*164.2]) color("purple") sphere(r = 1);
-translate([-2040, 0, 8*164.2]) color("purple") sphere(r = 1);
+translate([-1770, 0, 8*164.2]) color("purple") sphere(r = 1);
+translate([-2070, 0, 8*164.2]) color("purple") sphere(r = 1);
 
-translate([-2000, 0, 9*164.2]) color("purple") sphere(r = 1);
-translate([-2300, 0, 9*164.2]) color("purple") sphere(r = 1);
+translate([-2030, 0, 9*164.2]) color("purple") sphere(r = 1);
+translate([-2330, 0, 9*164.2]) color("purple") sphere(r = 1);
 
 translate([-2260, 0,10*164.2]) color("purple") sphere(r = 1);
 translate([-2721, 0,10*164.2]) color("purple") sphere(r = 1);
 
-translate([-2680, 0,11*164.2]) color("purple") sphere(r = 1);
-translate([-3142, 0,11*164.2]) color("purple") sphere(r = 1);
+translate([-2700, 0,11*164.2]) color("purple") sphere(r = 1);
+translate([-3152, 0,11*164.2]) color("purple") sphere(r = 1);
 
-translate([-3096, 0,12*164.2]) color("purple") sphere(r = 1);
+translate([-3106, 0,12*164.2]) color("purple") sphere(r = 1);
 translate([-3690, 0,12*164.2]) color("purple") sphere(r = 1);
 
 translate([-3690,      0,13*164.2]) color("purple") sphere(r = 1);
@@ -185,18 +185,22 @@ translate([-914,-731,447]) rotate([45,90,0])qTube2(86,100,50);
 translate([-853,-792,447]) rotate([180,0,45])qTube2(264,50,100);
 translate([-797,-828,283]) rotate([90,90,0])qTube2(105,100,50);
 translate([-797,-933,283]) rotate([180,0,0])qTube2(295,50,100);
+translate([-797,-1033,19]) rotate([90,0,0])qTube2(180,50,100);
 }
-module mainString(){
+module mainString(a){
 j=2;
-if(j==0)translate([-3100,0,1344]) rotate([56.83,0,0])qTube(2680,100);
-if(j==1) translate([-3100,0,1364]) rotate([57.65,0,0])qTube(2680,100);/*paralel*///56.83 57.65 56.07 very close 56.5/*не паралельно*/ 57.65- gparalel
-if(j==2)translate([-3100,0,1344]) rotate([56.5,0,0])qTube(2680,100);
+if(j==0)translate([-3100,0,1344]) rotate([56.83,0,0])qTube2(2680,a,100);//old
+if(j==1) translate([-3100,0,1364]) rotate([57.65,0,0])qTube2(2680,a,100);/*paralel*/
+if(j==2)translate([-3100,0,1344]) rotate([56.5,0,0])qTube2(2680,a,100);//very close 56.5
 }
-mainString();
-translate([-1110,-700,662]) rotate([180+122.28,0,90])qTube(2235,100);
+mainString(100);
+module AuxString(a){
+    translate([-1110,-700,662]) rotate([180+122.28,0,90])qTube2(2235,a,100);
+}
+AuxString(100);
 translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
-
+//upper string holder
 if(1)translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
 
 //hand rail
@@ -213,15 +217,33 @@ translate([-3050,0,1380])rotate([0,90,90]) color("blue",0.5)linear_extrude(heigh
 if(0)translate([-3665,-2190,3052]) rotate([0,90,90])color("blue",0.5)linear_extrude(height = 2190, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    
 polygon(points=[[0,0],[140,0],[140,5],[5,5],[5,140],[0,140]]);
 
-//plates mounting on stair string
-difference(){translate([-3100,-1680,2745]){
-    difference(){{rotate([180-45,0,0])qTube(180,100);
-    translate([0,-200,0])cube(200);}}
-}mainString();}
-difference(){translate([-3100,-1680 + stairD,2745-stairH]){
-    difference(){{rotate([180-45,0,0])qTube(180,100);
-    translate([0,-200,0])cube(200);}}
-}mainString();}
+//stumps
+module stump(coord){
+    difference(){translate(coord){
+    difference(){{rotate([180-45,0,0])qTube(200,100);
+    translate([99,-100,101])cube([200,200,200],center = true);}}
+    }translate([-1,0,0])mainString(102);}
+}
+module stumpsAuxString(coord){
+    difference(){translate(coord){
+    difference(){{rotate([180+45,0,90])qTube(200,100);
+    translate([99,-100,101])cube([500,500,350],center = true);}}
+    }translate([-1,0,0])AuxString(102);}
+}
+
+module stumpPlenty(){
+for (a =[0:1:2])stump([-3100,-1430 -a*stairD ,2581+a*stairH]);
+stump([-3100,-1430 +1*stairD -30,2581-1*stairH]);
+stump([-3100,-1430 +2*stairD -60,2581-2*stairH]);
+stump([-3100,-1440 +3*stairD -60,2581-3*stairH]);
+stumpsAuxString([-2890,-700 ,stairH*12+29]);
+stumpsAuxString([-2645,-700 ,stairH*11+29]);
+stumpsAuxString([-2410,-700 ,stairH*10+29]);
+for (a =[0:1:3])stumpsAuxString([-2190+a*stairD ,-700 ,stairH*(9-a)+29]);
+stumpsAuxString([-2222+4*stairD,-700 ,stairH*5+29]);
+}
+if(0)stumpPlenty();
+    
 //доп внеш косоур
 if(0){
 translate([-3690,-0,2095]) rotate([90,0,0])qTube2(580,50,4);
@@ -387,46 +409,7 @@ ax6 = st  * c; ay6 =st*c1t*c; bx6 = spx  * c; by6 =spy*c1p*cf15*c; cx6 = spx   *
             polygon(points=[[ax1-3*sh, ay1], [bx1-3*sh, by1], [cx1-3/2*sh, cy1], [dx1-3/2*sh, dy1]]);
 
 }
-//translate([-1260,-1260,6*stairH])  color( wood, stairAlpha )pivot5x5(40,stairH,nosing,1000);
 
-
-//разворотная 5х5 - (5 ступеней на 5 местах) 90х90см + 27 поступок и 3см  по обе стороны площадки
-/*
-module pivot5x5(ths,lev){//old style
-coeff = 6*10/9;
-//*******координаты ступеней
-//5ступень
-ax5 =   0; ay5 =  50 *coeff; bx5 =   0; by5 = 200*coeff; cx5 =75.5*coeff; cy5 = 200*coeff; dx5 =  24*coeff; dy5 =  50*coeff;
-//
-ax4 =  19*coeff; ay4 =  50*coeff; bx4 =  70*coeff; by4 = 200*coeff; cx4 = 154*coeff; cy4 = 200*coeff; dx4 =  43*coeff; dy4 =  50*coeff;
-//
-ax3 =  32*coeff; ay3 =  50*coeff; bx3 = 148*coeff; by3 = 200*coeff; bbx3 = 200*coeff; bby3 = 200*coeff; cx3 = 200*coeff; cy3 = 141*coeff; dx3 =  50*coeff; dy3 =30.5*coeff; ex3 = 50*coeff; ey3 = 50*coeff;
-//
-ax2 =  50*coeff; ay2 =  37*coeff; bx2 = 200*coeff; by2 = 148*coeff; cx2 = 200*coeff; cy2 =  69*coeff; dx2 =  50*coeff; dy2 =12.5*coeff;
-//
-ax1 =  50*coeff; ay1 =  18*coeff; bx1 = 200*coeff; by1 =  74*coeff; cx1 = 200*coeff; cy1 =  0*coeff; dx1 =  50*coeff; dy1 =  0*coeff;
-
-
-    translate([0,0,lev*5-ths])
-        linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax5, ay5], [bx5, by5], [cx5, cy5], [dx5, dy5]]);
-    translate([0,0,lev*4-ths])
-        linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax4, ay4], [bx4, by4], [cx4, cy4], [dx4, dy4]]);
-    translate([0,0,lev*3-ths])
-        linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax3, ay3], [bx3, by3], [bbx3, bby3], [cx3, cy3], [dx3, dy3], [ex3, ey3]]);
-    translate([0,0,lev*2-ths])
-        linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax2, ay2], [bx2, by2], [cx2, cy2], [dx2, dy2]]);
-    translate([0,0,lev-ths])
-        linear_extrude(height = ths, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
-            polygon(points=[[ax1, ay1], [bx1, by1], [cx1, cy1], [dx1, dy1]]);
-}
-
-//translate([-1329,-1329,-0]) color( wood, stairAlpha ) pivot5x5(40,stairH);
-//translate([-norWallDist +1200,-1200,174*9]) rotate([0,0,90]) color( wood, 1.0 ) pivot5x5(40,174);
-*/
 module stair(n,stD,stH,xl,yl,zl){//
     color( wood, stairAlpha ) 
         for (a =[0:1:n-1])
