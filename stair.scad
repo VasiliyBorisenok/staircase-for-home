@@ -182,7 +182,7 @@ AuxString(100);
 translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
 //upper string holder
-if(1)translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
+if(0)translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
 
 //stringer plate
 translate([-3050,0,1380])rotate([0,90,90]) color("blue",0.5)linear_extrude(height = 5, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    square([280,250],center = true);
@@ -228,7 +228,7 @@ module handrailGrating(d,f){
 aa = 130;//136.5;    
     bb= 1240;
 l = -3655;
-h = 2092;
+h = 2092-5;
 q=1950;
     s=stairH;
 translate([l,-bb-a*0,h+2*s])linear_extrude(height=q-2*s)offset(f)offset(-f)square(d,center=true);
@@ -263,9 +263,9 @@ l = -2720;
 h = 2092;
 q=1950;
     s=stairH;
-translate([l,-bb-a*0,h+1*s])linear_extrude(height=q-1*s-450)offset(f)offset(-f)square(d,center=true);
+translate([l,-bb-a*0,h+1*s-5])linear_extrude(height=q-1*s-450)offset(f)offset(-f)square(d,center=true);
 translate([l,-bb+a*1,h+0*s-5])linear_extrude(height=q-2*s-240)offset(f)offset(-f)square(d,center=true);
-translate([l+20,-bb+a*2+1,h-1*s])linear_extrude(height=q-1*s-300)offset(f)offset(-f)square(d,center=true);
+translate([l+20,-bb+a*2+1,h-1*s-5])linear_extrude(height=q-1*s-300)offset(f)offset(-f)square(d,center=true);
 
 
 translate([l,-bb-aa*1,h+2*s-5])linear_extrude(height=q-2*s-370)offset(f)offset(-f)square(d,center=true);
@@ -274,7 +274,7 @@ translate([l,-bb-aa*3,h+3*s-5])linear_extrude(height=q-3*s-200)offset(f)offset(-
 translate([l,-bb-aa*4,h+4*s-5])linear_extrude(height=q-4*s-120)offset(f)offset(-f)square(d,center=true);
 translate([l,-bb-aa*5,h+4*s-5])linear_extrude(height=q-4*s-40)offset(f)offset(-f)square(d,center=true);
 translate([l,-bb-aa*6,h+5*s-5])linear_extrude(height=q-5*s+10)offset(f)offset(-f)square(d,center=true);
-translate([l,-bb-aa*7,h+5*s])linear_extrude(height=q-5*s+90)offset(f)offset(-f)square(d,center=true);
+translate([l,-bb-aa*7,h+5*s-5])linear_extrude(height=q-5*s+90)offset(f)offset(-f)square(d,center=true);
 }
 
 color( steel, stairAlpha ){
