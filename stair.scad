@@ -181,7 +181,8 @@ mainString(100);
 module AuxString(a){
     translate([-1110,-700,662]) rotate([180+122.28,0,90])qTube2(2235,a,100);
 }
-AuxString(100);
+//
+difference(){AuxString(100);translate([-3400,-800,stairH*10]) cube(400);}
 translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
 //upper string holder
@@ -245,7 +246,9 @@ translate([l,-b+a*6,h+0*s])linear_extrude(height=q-0*s)offset(f)offset(-f)square
 translate([l,-b+a*7,h+0*s])linear_extrude(height=q-0*s)offset(f)offset(-f)square(d,center=true);
 translate([l,-b+a*8,h-0*s])linear_extrude(height=q-0*s)offset(f)offset(-f)square(d,center=true);
 //translate([l,-b+a*9,h-0*s])linear_extrude(height=q+0*s)offset(f)offset(-f)square(d,center=true);
-translate([l+23,-b+a*9-40,h-1*s])linear_extrude(height=s)offset(f)offset(-f)square(d,center=true);
+c=cat/2-60;
+translate([l+23+c+5 ,-c-b+a*9-40,h-1*s])linear_extrude(height=s+10)offset(f)offset(-f)square(d,center=true);
+translate([l+cat-80 ,-b+a*9-40,h-1*s])linear_extrude(height=s+10)offset(f)offset(-f)square(d,center=true);
 
 
 translate([l,-bb-aa*1,h+2*s])linear_extrude(height=q-2*s)offset(f)offset(-f)square(d,center=true);
@@ -454,7 +457,7 @@ module platesCuttingAuxBody3(){
      polygon(points=CuttingAuxBody3poly);
 }
 
-CuttingAuxBody4poly = [[-100,-100],[1340,-100],[1340,1340],[-100,1340] ];
+CuttingAuxBody4poly = [[-100,-100],[1500,-100],[1500,1540],[1350,1540],[1350,1340],[-100,1340]];
 module platesCuttingAuxBody4(){
     linear_extrude(height = 3000, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)
      polygon(points=CuttingAuxBody4poly);
@@ -462,7 +465,7 @@ module platesCuttingAuxBody4(){
 //platesCuttingAuxBody1();
 //platesCuttingAuxBody2();
 //platesCuttingAuxBody3();
-//platesCuttingAuxBody4();
+platesCuttingAuxBody4();
 module stairsPlatets(offsetv){
     {
         base=270;
@@ -481,7 +484,9 @@ translate([-1000,-1100,3*stairH-205]) color("purple") sphere(r = 1);
     }
     
     /*outer*/
-    translate([-norWallDist +1380,-1390,stairH*16-40]) rotate([0,0,90]) color( steel, stairAlpha )pivot6x6(5,stairH,nosing,1000,offsetv,0,CuttingAuxBody4poly);
+    translate([-norWallDist +1380,-1390,stairH*16-40]) rotate([0,0,90]) color( steel, stairAlpha )pivot6x6(5,stairH,nosing,1000,offsetv,0,CuttingAuxBody4poly);translate([-3677,-cat,stairH*13-45]) 
+    linear_extrude(5) polygon([[0,0],[0,cat],[cat,cat]]);
+    translate([-3687,0,stairH*12-45]) linear_extrude(5) offset(5)offset(-5) polygon([[cat - 50*sqrt(2),0],[cat+100,0],[cat+100,-50],[cat-50,-50],[cat/2,-cat/2],[cat/2 - 50/sqrt(2),-cat/2 + 50/sqrt(2)]]);
     /*inner*/
     translate([-norWallDist +1370,-1390,stairH*16-40]) rotate([0,0,90]) color( steel, stairAlpha )pivot6x6(5,stairH,nosing,1000,offsetv,0,    [[-100,400+50],[400+50,400+50],[400+50,-100],[1500,-100],[1500,1540],[-150,1540],[-150,-100],[400,-100],[400,400],[-100,400]]);
     /*body*/
@@ -497,6 +502,15 @@ translate([-1000,-1100,3*stairH-205]) color("purple") sphere(r = 1);
 }
 if(stepPlates)   color( steel, stairAlpha ) render() difference(){stairsPlatets(7);handrailGrating(23,8);}
 
+module triangle(){
+    
+}
+*translate([-3787,-400,stairH*10]) cube(400);
+//translate([-2980,-350,stairH*10]) linear_extrude(200) circle(350);
+cat = 435;
+*translate([-3687,-cat,stairH*13-45]) linear_extrude(5) polygon([[0,0],[0,cat],[cat,cat]]);
+
+
 
 //ступени
 if(strs){
@@ -509,14 +523,16 @@ translate([-norWallDist +1370,-1390,stairH*16]) rotate([0,0,90]) color( wood, st
 translate([-norWallDist-20,-1650,16*stairH]) rotate([0,0,0]) stair(3,stairD,stairH,1000,stairD+nosing,stairTHS,offsetv);//верхний пролет
 }
 //Стена спальня
-if(allco || (allca && 0)) %color(  alpha = alphaWalls ) translate([0,0,0]) rotate([90,0,180]) linear_extrude(height = 340, center = false,  twist = 0) difference(){
+module bdrwall(){
+    if(allco || (allca && 0)) %color(  alpha = alphaWalls ) translate([0,0,0]) rotate([90,0,180]) linear_extrude(height = 340, center = false,  twist = 0) difference(){
     square([corid_length,flourtoflour],center=false);    
     translate([wallNorth+arcDoorWay/2,arcDoorWayHeith-arcDoorWay/2,0])  circle(d=arcDoorWay);
     translate([wallNorth,0,0])  square([arcDoorWay,arcDoorWayHeith-arcDoorWay/2],center=false);
     if(meshCoef != 0.0)mesh(meshSize,meshCoef);
     
 }
-
+}
+bdrwall();
 //Стена ванна туалет
 if(allco || (allca && 1)) color(  alpha = alphaWalls ) translate([0,-65-corid_width,0]) rotate([90,0,180]) linear_extrude(height = 65, center = false,  twist = 0) difference(){
     square([corid_length,ceilingtoflour-15],center=false);    
