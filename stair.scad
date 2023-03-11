@@ -1,6 +1,6 @@
 generateStepPlatesDFX =      0;
-generateLowStumpsMeas =      1;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
-generateHighStumpsMeas =     0;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
+generateLowStumpsMeas =      0;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
+generateHighStumpsMeas =     1;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
 allca =                      0; //displaying of strucrural elements of the home is localy defined
 allco =                      0; //force enable displaying of strucrural elements of the home
 strs  =                      0;  //steps displaying
@@ -646,34 +646,41 @@ else if(generateLowStumpsMeas){//projection(cut=true) translate([0,0,-350])
     
     translate([78,0,-755]) color("red") sphere(r = 0.5);
     color("red") translate([78-h,      0,-755])rotate([90,00,12.7])linear_extrude(118)circle(0.1); 
-    
+    mirror([0,1,0])translate([-30   ,-200,-755])color("black")text("e:78 l:118 ",size = 40);
     
     translate([272   ,0,-755]) color("red") sphere(r = 0.5);
     translate([374.5 ,0,-755]) color("red") sphere(r = 0.5);
     color("red") translate([272 + h,   0,-755])rotate([90,00,12.7])linear_extrude(110)circle(0.1); 
+    mirror([0,1,0])translate([160   ,+300,-755])color("black")text("b:272 e:374.5 l:110 ",size = 40);
     
     translate([561.5 ,0,-755]) color("red") sphere(r = 0.5);
     translate([664   ,0,-755]) color("red") sphere(r = 0.5);
     color("red") translate([561.5 + h, 0,-755])rotate([90,00,12.7])linear_extrude(96) circle(0.1); 
+    mirror([0,1,0])translate([460   ,-200,-755])color("black")text("b:561.5 e:664 l:96 ",size = 40);
     
     translate([840   ,0,-755]) color("red") sphere(r = 0.5);
     translate([942.5 ,0,-755]) color("red") sphere(r = 0.5);
     color("red") translate([840 + h,   0,-755])rotate([90,00,12.7])linear_extrude(74) circle(0.1);
+    mirror([0,1,0])translate([740   ,+300,-755])color("black")text("b:840 e:942.5 l:74 ",size = 40);
     
     translate([1147.5,0,-755]) color("red") sphere(r = 0.5);//307.5
     translate([1250  ,0,-755]) color("red") sphere(r = 0.5);
     color("red") translate([1147.5 + h,0,-755])rotate([90,00,12.7])linear_extrude(74) circle(0.1);
+    mirror([0,1,0])translate([1047.5   ,-200,-755])color("black")text("b:1147.5 e:1250 l:74 ",size = 40);
 
     //l - 74
     translate([1455  ,0,-755]) color("red") sphere(r = 0.5);
     translate([1557.5,0,-755]) color("red") sphere(r = 0.5);
+    mirror([0,1,0])translate([1355   ,+300,-755])color("black")text("b:1455 e:1557.5 l:74 ",size = 40);
     //l - 74
     translate([1762.5,0,-755]) color("red") sphere(r = 0.5);
     translate([1865  ,0,-755]) color("red") sphere(r = 0.5);
+    mirror([0,1,0])translate([1662.5   ,-200,-755])color("black")text("b:1762.5 e:1865 l:74 ",size = 40);
     
     translate([2047  ,0,-755]) color("red") sphere(r = 0.5);
     translate([2149  ,0,-755]) color("red") sphere(r = 0.5);
     color("red") translate([2047 + h,  0,-755])rotate([90,00,12.7])linear_extrude(57)circle(0.1);
+    mirror([0,1,0])translate([1947   ,+300,-755])color("black")text("b:2047 e:2149 l:57 ",size = 40);
     
     
     
@@ -684,25 +691,31 @@ else if(generateHighStumpsMeas){//projection(cut=true) translate([0,0,-350])
     
      h = (352.5 - 250.5)/2;//halfThicknes
     //full thichness - 102
-   
+    translate([-10   ,100,255])color("black")text("full thichness - 102",size = 40);
     translate([250.5,0,10]) color("red") sphere(r = 0.5);
     translate([352.5,0,10]) color("red") sphere(r = 0.5);
     color("red") translate([250.5 +h,0,10])rotate([90,00,191.4])linear_extrude(86.5)circle(0.1);//122.28 
+    translate([-30   ,-200,255])color("black")text("b:250.5 e:352.5 l:86.5 ",size = 40);
     
     translate([549.5,0,10]) color("red") sphere(r = 0.5);   
     color("red") translate([549.5 + h,0,10])rotate([90,00,191.4])linear_extrude(85.5)circle(0.1);//122.28 
+    translate([400   ,200,255])color("black")text("b:549.5  l:86.5 ",size = 40);
     
     translate([834,0,10]) color("red") sphere(r = 0.5);    
     color("red") translate([834 + h,0,10])rotate([90,00,191.4])linear_extrude(95)circle(0.1);//122.28 
+    translate([800   ,-200,255])color("black")text("b:834  l:95 ",size = 40);
     
     translate([1118.3,0,10]) color("red") sphere(r = 0.5);//307.5   
     color("red") translate([1118.3 + h,0,10])rotate([90,00,191.4])linear_extrude(105)circle(0.1);//122.28 
+    translate([980   ,200,255])color("black")text("b:1118.3  l:105 ",size = 40);
 
     //l - 105
     translate([1424.5,0,10]) color("red") sphere(r = 0.5);
+    translate([1324   ,-200,255])color("black")text("b:1424.5  l:105 ",size = 40);
     
     //l - 105
     translate([1730.5,0,10]) color("red") sphere(r = 0.5);
+    translate([1630   ,200,255])color("black")text("b:1730.3  l:105 ",size = 40);
 
 
     //the summ for all stumps 1049 aleast 1300 of tube is enough.
