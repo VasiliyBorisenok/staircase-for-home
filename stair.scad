@@ -203,8 +203,8 @@ module AuxString(a){
 }
 //
 if(longStrings){
-    add = generateStumpsDFX ? 1000 : 0;
-    translate([0,add,0]) difference(){AuxString(100);translate([-3400,-800,stairH*10]) cube(400);}
+  
+    difference(){AuxString(100);translate([-3400,-800,stairH*10]) cube(400);}
 }
 //опорный столбик
 if(otherStaff)translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
@@ -233,17 +233,17 @@ module stumpsAuxString(coord){
 }
 
 module stumpPlenty(){
-add = generateStumpsDFX ? 1000 : 0;
+
     translate([0,0,0]){
 for (a =[0:1:2])stump([-3100,-1430 -a*stairD ,2581+a*stairH]);
 stump([-3100,-1430 +1*stairD -30,2581-1*stairH]);
 stump([-3100,-1430 +2*stairD -60,2581-2*stairH]);
 stump([-3100,-1440 +3*stairD -60,2581-3*stairH]);
-stumpsAuxString([-2890,add-700 ,stairH*12+29]);
-stumpsAuxString([-2645,add-700 ,stairH*11+29]);
-stumpsAuxString([-2410,add-700 ,stairH*10+29]);
-for (a =[0:1:3])stumpsAuxString([-2190+a*stairD ,add-700 ,stairH*(9-a)+29]);
-stumpsAuxString([-2222+4*stairD,add-700 ,stairH*5+29]);
+stumpsAuxString([-2890,-700 ,stairH*12+29]);
+stumpsAuxString([-2645,-700 ,stairH*11+29]);
+stumpsAuxString([-2410,-700 ,stairH*10+29]);
+for (a =[0:1:3])stumpsAuxString([-2190+a*stairD ,-700 ,stairH*(9-a)+29]);
+stumpsAuxString([-2222+4*stairD,-700 ,stairH*5+29]);
 }
 }
 if(stumps)color( steel, stairAlpha )render()stumpPlenty();
