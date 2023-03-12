@@ -1,13 +1,13 @@
 generateStepPlatesDFX =      0;
-generateLowStumpsMeas =      1;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
+generateLowStumpsMeas =      0;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
 generateHighStumpsMeas =     0;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
 allca =                      0; //displaying of strucrural elements of the home is localy defined
 allco =                      0; //force enable displaying of strucrural elements of the home
 strs  =                      0;  //steps displaying
 railingFence =               0;
-stepPlates =                 0; 
+stepPlates =                 1; 
 stumps =                     1;
-longStrings =                1;
+longStrings =                0;
 otherStaff =                 0;
 
 stairH = 164.2;//173.88;//164.7
@@ -67,6 +67,72 @@ ceiling   = "White";
 color(  alpha = alphaWalls );
 
 stairAlpha = 0.5;
+    
+//Holes to
+if(1){
+    r = 3;
+    a = 0;
+    for (b =[0:1:15]){
+        translate([-3655,b*130-2150+65 - a,0])linear_extrude(3000)circle(r);
+        translate([-3655,b*130-2150+65 + a,0])linear_extrude(3000)circle(r);
+    }
+    for (b =[0:1:2]){
+        g = 55;
+        translate([-3470+g*b,-182+g*b,0])linear_extrude(3000)circle(r);
+        translate([-3470-g*b,-182-g*b,0])linear_extrude(3000)circle(r);
+    }
+    for (b =[0:1:2]){
+        g = 65;
+        translate([-3304+g*b,-25,0])linear_extrude(3000)circle(r);
+        //translate([-3470-g*b,-25-g*b,0])linear_extrude(3000)circle(r);
+    }
+    for (b =[0:1:4]){
+        g = 86;
+        translate([-3304-g*b,-25,0])linear_extrude(3000)circle(r);
+        //translate([-3470-g*b,-25-g*b,0])linear_extrude(3000)circle(r);
+    }
+    for (b =[0:1:5]){
+        g = 130;
+        translate([-2725,65-2150+g*b,0])linear_extrude(3000)circle(r);
+        //translate([-3470-g*b,-25-g*b,0])linear_extrude(3000)circle(r);
+    }
+    for (b =[0:1:2]){
+        g = 260;
+        translate([-155-2725,20-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,20-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,210-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,210-2150+g*b,0])linear_extrude(3000)circle(r);
+        //translate([-3470-g*b,-25-g*b,0])linear_extrude(3000)circle(r);
+    }
+    for (b =[3:1:3]){
+        g = 260;
+        translate([-2725,-1298,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,20-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,20-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,130-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,185-2150+g*b,0])linear_extrude(3000)circle(r);
+        
+    }
+    for (b =[4:1:4]){
+        g = 260;
+        translate([-2725,138-1298,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,-57-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,5-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,50-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,175-2150+g*b,0])linear_extrude(3000)circle(r);
+        
+    }
+    for (b =[5:1:5]){
+        g = 260;
+        translate([-2725,270-1298,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,-118-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-385-2725,5-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-155-2725,-8-2150+g*b,0])linear_extrude(3000)circle(r);
+        translate([-370-2725,195-2150+g*b,0])linear_extrude(3000)circle(r);
+        
+    }
+}   
+    
 if(0){//measurement tool
 translate([-3690,-0,2100]) color("red") sphere(r = 1);
 translate([-3100,-0,1460.5]) color("green") sphere(r = 1);
@@ -145,7 +211,7 @@ translate([-3690,  -2170,18*164.2]) color("purple") sphere(r = 1);
 translate([-3690,  -2170,19*164.2]) color("purple") sphere(r = 1);
 
 translate([-2334,  -800,1200]) color("purple") sphere(r = 4);
-translate([-2507f,  -800,1200]) color("purple") sphere(r = 4);
+translate([-2507,  -800,1200]) color("purple") sphere(r = 4);
 translate([-3655,-80,0]) color("red") sphere(r = 1);
 translate([-3690,-50,0]) color("red") sphere(r = 1);
 translate([-3680,-50,0]) color("red") sphere(r = 1);
