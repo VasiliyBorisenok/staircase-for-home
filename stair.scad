@@ -1,7 +1,7 @@
-generateStepPlatesDFX =      0;
+generateStepPlatesDFX =      0;// needs "stepPlates"only to be enabled
 generateLowStumpsMeas =      0;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
 generateHighStumpsMeas =     0;//see code, manual meas. stumps size and it's loc. on the strings,stumps and longStrings should be only enable.
-allca =                      0; //displaying of strucrural elements of the home is localy defined
+allca =                      1; //displaying of strucrural elements of the home is localy defined
 allco =                      0; //force enable displaying of strucrural elements of the home
 strs  =                      1;  //steps displaying
 railingFence =               1;
@@ -313,9 +313,11 @@ if(longStrings){
 //опорный столбик
 if(otherStaff)translate([-1100,-600,587]) rotate([180,0,270])qTube(583,100);
 
-//upper string holder
-if(otherStaff)translate([-3450,-2195,2915]) rotate([0,90,0])qTube2(800,100,50);
-
+//upper string high mount
+module upperStringHighMount(){
+translate([-3450,-2185,2917]) rotate([0,90,0])qTube2(800,100,50);
+}
+if(otherStaff)upperStringHighMount();
 //stringer plate
 if(otherStaff)translate([-3050,0,1380])rotate([0,90,90]) color("blue",0.5)linear_extrude(height = 5, center = false, convexity = 10,  slices = 20, scale = 1.0, $fn = 16)    square([280,250],center = true);
 //крепление подвеса
@@ -571,6 +573,7 @@ ax6 = st  * c; ay6 =st*c1t*c; bx6 = spx  * c; by6 =spy*c1p*c; cx6 = spx   * c; c
 }
 
 
+
 module stairsPlatets(offsetv, offsetv_){
     {
         base=270;
@@ -603,7 +606,7 @@ plgn2_5x5 = [[-100,base+gap],[base+gap-cut,base+gap],[base+gap-50,base+gap-cut],
     /*body*/
     translate([-norWallDist +1370,-1390,stairH*16-40]) rotate([0,0,90]) color( steel, stairAlpha )pivot6x6(5,stairH,offsetv_,1000,offsetv,offsetv_,    [[-100,800+40],[800+40,800+40],[800+40,-100],[1500,-100],[1500,1540],[-150,1540],[-150,-100],[400,-100],[400,400],[-100,400]]);
         
-    translate([-3677,-cat,stairH*13-45]) linear_extrude(5) polygon([[0,0],[0,cat],[cat,cat]]);
+    translate([-3680,-cat,stairH*13-45]) linear_extrude(5) polygon([[0,0],[0,cat],[cat,cat]]);
     
     translate([-3687,0,stairH*12-45]) linear_extrude(5) offset(5)offset(-5) polygon([[cat - 50*sqrt(2),0],[cat+100,0],[cat+100,-50],[cat-50,-50],[cat/2,-cat/2],[cat/2 - 50/sqrt(2),-cat/2 + 50/sqrt(2)]]);
 
@@ -619,12 +622,29 @@ translate([-2705, -963, 1925.4])linear_extrude(5)circle(25);
 translate([-2705, -963, 1925.4+stairH])linear_extrude(5)circle(25);
         translate([ -3655, -980, 2253.2+stairH])linear_extrude(5)circle(25);
         translate([-3655, -590, 2089])linear_extrude(5)circle(25);
-        
-}
+        translate([-3680, -590, 2089])linear_extrude(5)square(35);
+        translate([- 2562, -965, 1925.4-stairH])linear_extrude(5)circle(25);
+        translate([- 2420, -965, 1925.4-stairH])linear_extrude(5)circle(25);
+        translate([- 2420, -965, 1925.4-stairH*2])linear_extrude(5)circle(25);
+        translate([- 2725, -1087, 1925.4+stairH*2])linear_extrude(5)circle(25);
+        //translate([- 2745, -1097, 1925.4+stairH*2])linear_extrude(5)circle(25);
+        translate([- 2725, -1087, 1925.4+stairH])linear_extrude(5)circle(25);
+        translate([- 2725, -1228, 1925.4+stairH*2])linear_extrude(5)circle(25);
+        translate([- 2725, -1228, 1925.4+stairH*3])linear_extrude(5)circle(25);
+        translate([- 1130, -965, 1925.4-stairH*7])linear_extrude(5)circle(25);
+        translate([- 1130, -965, 1925.4-stairH*8])linear_extrude(5)circle(25);
+        translate([- 1017, -965, 1925.4-stairH*8])linear_extrude(5)circle(25);
+        translate([- 1005, -931, 1925.4-stairH*8])linear_extrude(5)difference(){circle(25);circle(10);translate([-4,-11,0])square(40);}
+        translate([- 1132, -931, 1925.4-stairH*7])linear_extrude(5)difference(){circle(15);circle(10);translate([-5,-9,0])offset(-4)offset(4)square(50);translate([-25,-1,0])square(50);}
+                translate([- 2760, -1082, 1925.4+2*stairH])linear_extrude(5)difference(){circle(20);circle(10);translate([0,0,0])offset(-4)offset(4)square(50);translate([-50,-6,0])square(50);}
+                                translate([- 2760, -1232, 1925.4+3*stairH])linear_extrude(5)difference(){circle(20);circle(10);translate([-10,0,0])offset(-4)offset(4)square(50);translate([-54,-16,0])square(50);}
+
+        }
+
 
 
 if( generateStepPlatesDFX) if(stepPlates)                                       difference(){stairsPlatets(7,10);handrailGrating(23,1);stepsMountHoleCuttingBody(3);translate([-3696, -2194,2877]) cube(400);}
-if(!generateStepPlatesDFX) if(stepPlates)   color( steel, stairAlpha ) render() difference(){stairsPlatets(7,10);handrailGrating(23,1);stepsMountHoleCuttingBody(3);translate([-3696, -2194,2877]) cube(400);}
+if(!generateStepPlatesDFX) if(stepPlates)   color( steel, stairAlpha ) render() difference(){stairsPlatets(15,10);handrailGrating(23,1);stepsMountHoleCuttingBody(3);translate([-3696, -2194,2877]) cube(400);}
 
 module triangle(){
     
@@ -674,7 +694,7 @@ module platesCuttingAuxBody4(){
 
 //Стена спальня
 module bdrwall(){
-    if(allco || (allca && 0)) %color(  alpha = alphaWalls ) translate([0,0,0]) rotate([90,0,180]) linear_extrude(height = 340, center = false,  twist = 0) difference(){
+    if(allco || (allca && 1)) %color(  alpha = alphaWalls ) translate([0,0,0]) rotate([90,0,180]) linear_extrude(height = 340, center = false,  twist = 0) difference(){
     square([corid_length,flourtoflour],center=false);    
     translate([wallNorth+arcDoorWay/2,arcDoorWayHeith-arcDoorWay/2,0])  circle(d=arcDoorWay);
     translate([wallNorth,0,0])  square([arcDoorWay,arcDoorWayHeith-arcDoorWay/2],center=false);
@@ -684,7 +704,7 @@ module bdrwall(){
 }
 bdrwall();
 //Стена ванна туалет
-if(allco || (allca && 1)) color(  alpha = alphaWalls ) translate([0,-65-corid_width,0]) rotate([90,0,180]) linear_extrude(height = 65, center = false,  twist = 0) difference(){
+if(allco || (allca && 0)) color(  alpha = alphaWalls ) translate([0,-65-corid_width,0]) rotate([90,0,180]) linear_extrude(height = 65, center = false,  twist = 0) difference(){
     square([corid_length,ceilingtoflour-15],center=false);    
     translate([corid_length-eastOpening,0,0])  square([eastOpening,ceilingtoflour],center=false);
     translate([-eastMeas4 + corid_length,0,0])  square([eastDoorWayUnif,eastDoorWayHeith],center=false);
@@ -748,7 +768,7 @@ if(generateStepPlatesDFX)for (i =[0:1:4]){
     
     for (j =[0:1:4]){
         s = 42-(j+5*i)*stairH;
-        translate([i*2000,j*1900,0]) projection(cut=true) translate([0, 0, s]) super(); //cube([500,600,6000]); 
+        translate([i*3000,j*2500,0]) projection(cut=true) translate([0, 0, s]) super(); //cube([500,600,6000]); 
         echo(s);
     }
    
